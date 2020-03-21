@@ -1,1 +1,1 @@
-
+download https://vovak2018.github.io/host/lavastudio/installInstruction.txt tmp\version.txt
