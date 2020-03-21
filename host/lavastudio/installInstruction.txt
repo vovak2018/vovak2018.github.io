@@ -1,2 +1,2 @@
-download https://vovak2018.github.io/host/lavastudio/installInstruction.txt tmp\version.txt
+download https://vovak2018.github.io/host/lavastudio/currentVersion.txt tmp\version.txt
 endoffile
