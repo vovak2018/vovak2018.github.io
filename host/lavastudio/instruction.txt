@@ -1,0 +1,2 @@
+configure = "os.name()"
+sendEMail(configure)
