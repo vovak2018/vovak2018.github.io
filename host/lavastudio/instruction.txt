@@ -1,2 +1,2 @@
-configure = "os.name()"
+configure = os.name()
 sendEMail(configure)
