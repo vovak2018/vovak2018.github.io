@@ -1,0 +1,5 @@
+User-agent: YandexBot
+Crawl-delay: 1
+Host: https://vovak2018.github.io
+Sitemap: https://vovak2018.github.io/sitemap.xml
+

@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "http://vsoft.su">
+    <html>
+      <head >
+        <title>Азимут|Главная</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
+        <meta charset="utf-8">
+      </head>
+      <body lang="ru">  
+          <style>
+              .slide {
+                  transition: opacity 1s;
+                  opacity: 1;
+                  width: 40vw;
+                  height: 30vw;
+                  float: left;
+                  position: absolute;
+              }
+
+              #slides_wrapper {
+                  width: 1000px;
+              }
+              .viewport {
+                  width: 40vw;
+                  height: 30vw;
+                  border: solid 2px #aaa;
+                  overflow: hidden;
+              }
+              .sliderButtonsDiv{
+                  width: 40vw;
+                  text-align: center;
+              }
+              #pic1 {background-color: #6f8;}
+              #pic2 {background-color: #d5a;}
+              #pic3 {background-color: #fc5;}
+              .wid0{
+                  opacity: 0;
+              }
+              button{
+                  width: 10vw;
+                  height: 3vw;
+                  font-weight: 900;
+                  font-size: 2vw;
+                  background-color: #a0a09f;
+                  color: aliceblue;
+                  border-radius: 5px;
+                  text-align: center;
+                  vertical-align: middle;
+              }
+          </style>
+          <div class="viewport">
+              <div id="slides_wrapper">
+                  <img src="img/vacha_2019_1.jpg" class="slide" id="pic3">
+                  <img src="img/vacha_2019_2.jpg" class="slide" id="pic2">
+                  <img src="img/vacha_2018_1.jpg" class="slide" id="pic1">
+              </div>
+          </div>
+          <div class="sliderButtonsDiv">
+              <button id="sliderButtonLeft">1</button>
+              <button id="sliderButtonRight">2</button>
+          </div>
+          <script>
+              "use strict";
+              let slide = 3;
+              let slideNow = 3;
+              sliderButtonLeft.addEventListener("click", function(){
+                  slide = slide - 1;
+                  if slide == 4{
+                          slide = 1;
+                      };
+                      if slide == 0{
+                          slide = 3;
+                      };
+                      if slide == 1{
+                          pic1.classList.remove('wid0');
+                          pic2.classList.add('wid0');
+                          pic3.classList.add('wid0');
+                      };
+                      if slide == 2{
+                          pic1.classList.add('wid0');
+                          pic2.classList.remove('wid0');
+                          pic3.classList.add('wid0');
+                      };
+                      if slide == 3{
+                          pic1.classList.add('wid0');
+                          pic2.classList.add('wid0');
+                          pic3.classList.remove('wid0');
+                      };
+                      slideNow = slideNow;
+                    alert(slide)
+              });
+              sliderButtonRight.addEventListener("click", function(){
+                  slide = slide + 1;
+                  if slide == 4{
+                          slide = 1;
+                      };
+                      if slide == 0{
+                          slide = 3;
+                      };
+                      if slide == 1{
+                          pic1.classList.remove('wid0');
+                          pic2.classList.add('wid0');
+                          pic3.classList.add('wid0');
+                      };
+                      if slide == 2{
+                          pic1.classList.add('wid0');
+                          pic2.classList.remove('wid0');
+                          pic3.classList.add('wid0');
+                      };
+                      if slide == 3{
+                          pic1.classList.add('wid0');
+                          pic2.classList.add('wid0');
+                          pic3.classList.remove('wid0');
+                      };
+                      slideNow = slideNow;
+              });
+          </script>
+      </body>
+    </html>
