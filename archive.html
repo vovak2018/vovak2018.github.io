@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru"> 
+    <script src="https://vovak2018.github.io/js/head.js"></script>
+<body>
+    <script src="https://vovak2018.github.io/js/all.js"></script>
+    <page>
+        <style>
+      table {
+        width: 70%;
+        border-collapse: collapse;
+      }
+      td, th {
+        border: 1px solid #354d73;
+        padding: 3px 7px 2px 7px;
+      }
+      th {
+        text-align: left;
+        padding: 5px;
+        background-color: #354d73;
+        color: #fff;
+      }
+      tr:nth-child(odd) { background-color: #ffffff; }
+    </style>
+        <table>
+      <tr><th>Место поведения соревнований</th></tr>
+            <script>
+                let maps = readFile('https://vovak2018.github.io/products/!files.txt').split('\n').reverse()
+                console.log("Собраны карты: " + maps)
+                for (var i = 0; i < maps.length - 1; i++) {
+                    document.write('<tr><td class="tr1">' + maps[i + 1] + '</td></tr>')
+	            }
+                let elems = document.querySelectorAll(".tr1")
+                for (var i = 0; i < elems.length; i++) {
+                    elems[i].addEventListener("click", function(e){
+                        location = ("https://vovak2018.github.io/product.html?" + readFile('https://vovak2018.github.io/products/' + e.currentTarget.innerHTML + '.txt'))
+                    });
+                }
+            </script>
+    </table>
+    </page>
+    <footer>
+        <script src="https://vovak2018.github.io/js/footer.js"></script>
+    </footer>
+</body>
+
+</html>
