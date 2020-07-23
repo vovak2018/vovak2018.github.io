@@ -1,0 +1,236 @@
+<html lang="ru"> 
+    <script src="https://vovak2018.github.io/js/head.js"></script>
+    <script src='http://code.jquery.com/jquery-2.1.1.min.js'></script>
+
+<body>
+    <script src="https://vovak2018.github.io/js/all.js"></script>
+    <page>
+        <!-- Yandex.RTB R-A-429687-2 -->
+    <div id="yandex_rtb_R-A-429687-2"></div>
+    <script type="text/javascript">
+        (function(w, d, n, s, t) {
+            w[n] = w[n] || [];
+            w[n].push(function() {
+                Ya.Context.AdvManager.render({
+                    blockId: "R-A-429687-2",
+                    renderTo: "yandex_rtb_R-A-429687-2",
+                    async: true
+                });
+            });
+            t = d.getElementsByTagName("script")[0];
+            s = d.createElement("script");
+            s.type = "text/javascript";
+            s.src = "//an.yandex.ru/system/context.js";
+            s.async = true;
+            t.parentNode.insertBefore(s, t);
+        })(this, this.document, "yandexContextAsyncCallbacks");
+    </script>
+    <script>
+function ValidPhone() {
+	var re = /^\d[\d\(\)\ -]{4,14}\d$/;
+	var myPhone = phone.value;
+	var valid = re.test(myPhone);
+	if (valid) phone.className = "inputNorm";
+	else phone.className = "inputError";
+	return valid;
+}
+
+function ucFirst(str) {
+	if (!str) return str;
+	return str[0].toUpperCase() + str.slice(1);
+}
+
+function ValidName() {
+	let name = userName.value.replace(" ", "")
+	if (name.length > 1) {
+		userName.className = "inputNorm"
+		return true
+	} else {
+		userName.className = "inputError"
+		//alert(name.replace(" ", "").length);
+		return false
+	}
+}
+
+function ValidSurname() {
+	let name = userSurname.value.replace(" ", "")
+	if (name.length > 1) {
+		userSurname.className = "inputNorm"
+		return true
+	} else {
+		userSurname.className = "inputError"
+		//alert(name.replace(" ", "").length);
+		//alert(name.length)
+		return false
+	}
+}
+    </script>
+    <style>
+        ol{
+            list-style: none;
+        }
+        ol > li{
+            padding-left: 20px;
+            position: relative;
+            margin: 10px;
+            color: rgb(114, 114, 114);
+        }
+        ol > li:before{
+            content: '✔';
+            position: absolute; top: 0; left: 0;
+            color: rgb(114, 114, 114);
+        }
+        .downloadButton {
+            transition: all 0.5s;
+            background-color: #354d73;
+            color: aliceblue;
+            text-align: center;
+            font-family: Helvetica;
+            font-size: 15px;
+            height: 30px;
+            width: 50%;
+            border-radius: 15px;
+            margin-top: 30px;
+            line-height:30px;
+            margin-left: 25%;
+        }
+        .okButton:hover {
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        .okButton {
+            transition: all 0.5s;
+            background-color: #00C90D;
+            color: aliceblue;
+            text-align: center;
+            font-family: Helvetica;
+            font-size: 15px;
+            height: 30px;
+            width: 50%;
+            border-radius: 15px;
+            margin-top: 30px;
+            line-height:30px;
+            margin-left: 25%;
+        }
+        .downloadButton:hover {
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        input[type="text"], input[type="email"] {
+            border-width: 0;
+            outline: none;
+            margin: 0;
+            width: 90%;
+            padding: 10px 15px;
+        }
+        .inputNorm {
+            background: #e6e6e6;
+        }
+        .inputError {
+            border: 1px solid red;
+            outline: none;
+            margin: 0;
+            width: 90%;
+            padding: 10px 15px;
+            background: #FF7373;
+        }
+        .inputOk {
+            border: 1px solid #00C90D;
+            outline: none;
+            margin: 0;
+            width: 90%;
+            padding: 10px 15px;
+            background: #39E444;
+        }
+        input[type="text"]:focus, input[type="email"]:focus {
+            box-shadow: inset 0 0 0 2px rgba(0,0,0,.2);
+        }
+    </style>
+    <div class="container">
+        <main class="main1">
+            <img src="media/img/compass1.jpg" width="100%">
+        </main>
+        <aside class="aside1">
+            <h3>Модель 1</h3>
+            <ol>
+                <li>
+                    Быстрая стрелка позволяет определить направление на север за доли секунды, не ожидая, пока она установится
+                </li>
+                <li>
+                    Стабильная стрелка позволяет определять направление на бегу, не раскачиваясь при движении
+                </li>
+            </ol>
+            <h3 style="text-align: left; padding: 10px;">Цена: <span id="price">700</span>p</h3>
+            <div class="downloadButton" id="buy">
+                Заказать
+            </div>
+        </aside>
+    </div>
+    <script>
+function sending() {
+
+let req = new XMLHttpRequest();
+
+req.onreadystatechange = () => {
+    if (req.readyState == XMLHttpRequest.DONE) {
+        let arr = req.responseText;
+        arr = arr.slice(0, arr.length - 2);
+        //alert(arr);
+        let now = `{
+"client_name": "${userName.value}",
+"client_surname": "${userSurname.value}",
+"phone_number": "${phone.value}",
+"model_ID": "${0001}",
+"comment": "${comment.value}"
+}`
+        now = arr + '},' + now + ']'
+        console.log(now)
+        //Отсылаем заказ
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = () => {
+        if (req.readyState == XMLHttpRequest.DONE) {
+            console.log(req.responseText);
+        }
+        };
+        req.open("PUT", "https://api.jsonbin.io/b/5f12e7ec9180616628440010", true);
+        req.setRequestHeader("Content-Type", "application/json");
+        req.send(now);
+            //если ушел удачно
+        document.querySelector("aside").innerHTML = `
+        <h3>Модель 1 успешно заказана!</h3>
+        <br><br>
+        <p>Отлично! Мы отправили вашу заявку, в течении некотрого времени с вами свяжутся, чтобы обсудить подробности.</p>   `
+    }
+
+};
+
+req.open("GET", "https://api.jsonbin.io/b/5f12e7ec9180616628440010", true);
+req.setRequestHeader("secret-key", "$2b$10$YZQsyDdzst10vwjtPk5iQuhIF27tXOBp40JgEZ5Fvgud3b2tG1p8y");
+req.send();
+
+
+}
+onBuy = '\
+    <h3>Заказ модели 1</h3>\
+    <fieldset style="margin-top: 25px;">\
+        <legend>Заполните эту форму и мы с вами свяжемся</legend>\
+        <label style="padding-top: 15px; text-align: left;">Фамилия<br><input class="inputNorm" id="userSurname" type="text" required placeholder="Иванов"></label><br>\
+        <label style="padding-top: 15px; text-align: left;">Имя<br><input class="inputNorm" id="userName" type="text" required placeholder="Иван"></label><br>\
+        <label style="padding-top: 15px; text-align: left;">Контактный телефон<br><input class="inputNorm" id="phone" type="text" required  placeholder="8 123 45 67 890 (Без скобок и тире)"></label><br>\
+        <label style="padding-top: 15px; text-align: left;">Комментарий<br><input class="inputNorm" id="comment" type="text" placeholder="Возможно, хотите добавить что-то еще?"></label><br>\
+    </fieldset>\
+    <div class="downloadButton" id="send">Отправить</div>\
+    '
+buy.onclick = function() {
+document.querySelector("aside").innerHTML = onBuy
+send.onclick = function() {
+    if (ValidName() & ValidPhone() & ValidSurname()) {
+        sending()
+    }
+};
+};
+    </script>
+    </page>
+    <footer>
+        <script src="https://vovak2018.github.io/js/footer.js"></script>
+    </footer>
+</body>
+</html>
