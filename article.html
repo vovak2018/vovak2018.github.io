@@ -169,9 +169,9 @@ function sending() {
 
 let req = new XMLHttpRequest();
 
-req.onreadystatechange = () => {
-    if (req.readyState == XMLHttpRequest.DONE) {
-        let arr = req.responseText;
+req.onload = function(e) {
+    if (this.status == 200) {
+        let arr = this.responseText;
         arr = arr.slice(0, arr.length - 2);
         //alert(arr);
         let now = `{
@@ -192,6 +192,7 @@ req.onreadystatechange = () => {
         };
         req.open("PUT", "https://api.jsonbin.io/b/5f12e7ec9180616628440010", true);
         req.setRequestHeader("Content-Type", "application/json");
+        req.setRequestHeader("secret-key", "$2b$10$YZQsyDdzst10vwjtPk5iQuhIF27tXOBp40JgEZ5Fvgud3b2tG1p8y");
         req.send(now);
             //если ушел удачно
         document.querySelector("aside").innerHTML = `
