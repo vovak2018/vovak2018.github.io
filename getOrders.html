@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Текущие заказы</title>
+    </head>
+    <body>
+        <style>
+            div {
+                border: 1px solid black;
+            }
+        </style>
+        <script>
+            let request = new XMLHttpRequest();
+            request.onload = function(e) {
+                if (this.status == 200) {
+                    console.log(this.responseText);
+                    let workingText = this.responseText;
+                    let parsedText = JSON.parse(workingText)
+                    for (i in parsedText) {
+                        document.write(`<div>
+                                            <h3>Заказ ${i}</h3>
+                                            <p>${parsedText[i].client_name} ${parsedText[i].client_surname}<br>
+                                                Телефон: ${parsedText[i].phone_number}<br>
+                                                Модель компаса: ${parsedText[i].model_ID}<br>
+                                                Комментарий заказчика: ${parsedText[i].comment}</p>
+                                        </div>`)
+                    };
+                }
+                else {
+                    alert('При загрузке заказов произошла ошибка ' + this.status)
+                };
+            };
+            request.open("GET", "https://api.jsonbin.io/b/5f12e7ec9180616628440010/latest", true);
+            request.setRequestHeader("secret-key", "$2b$10$YZQsyDdzst10vwjtPk5iQuhIF27tXOBp40JgEZ5Fvgud3b2tG1p8y");
+            request.send();
+        </script>
+    </body>
+</html>
