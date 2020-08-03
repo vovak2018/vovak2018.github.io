@@ -8,6 +8,7 @@ document.write('<script async src="https://www.googletagmanager.com/gtag/js?id=U
 document.write('<script src="https://vovak2018.github.io/js/googleAnalytics.js"></script>');
 document.write('<script src="https://vovak2018.github.io/js/socials.js"></script>');
 document.write('<script src="https://vovak2018.github.io/js/header.js"></script>');
+document.write('<script src="https://vovak2018.github.io/js/lava.js"></script>');
 if (screenWidth > 646){
     document.write('<script src="https://vovak2018.github.io/js/menu.js"></script>');
 } else{
