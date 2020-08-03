@@ -11,6 +11,8 @@
             }
         </style>
         <script>
+            let secretKey = getFile('https://vovak2018.github.io/media/data/secret-key.txt');
+            let ordersJsonUrl = getFile('https://vovak2018.github.io/media/data/ordersJsonUrl.txt');
             let request = new XMLHttpRequest();
             request.onload = function(e) {
                 if (this.status == 200) {
@@ -32,8 +34,8 @@
                     alert('При загрузке заказов произошла ошибка ' + this.status)
                 };
             };
-            request.open("GET", "https://api.jsonbin.io/b/5f12e7ec9180616628440010/latest", true);
-            request.setRequestHeader("secret-key", "$2b$10$YZQsyDdzst10vwjtPk5iQuhIF27tXOBp40JgEZ5Fvgud3b2tG1p8y");
+            request.open("GET", ordersJsonUrl + "/latest", true);
+            request.setRequestHeader("secret-key", secretKey);
             request.send();
         </script>
     </body>
