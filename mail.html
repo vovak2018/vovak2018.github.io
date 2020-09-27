@@ -16,7 +16,7 @@
                 console.log(msgs[i]);
                 document.write("<p>" + msgs[i].name + ": " + msgs[i].msg);
             }
-            document.write('<br><br><input type="text" id="namet" value="name"><input type="text" id="message" value="msg"><button id="send">send</button>');
+            document.write('<br><br><input type="text" id="namet" value="name"><input type="textarea" id="message" value="msg"><button id="send">send</button>');
             send.onclick = function() {
                 console.log(namet.value, message.value)
                 let req = new XMLHttpRequest();
