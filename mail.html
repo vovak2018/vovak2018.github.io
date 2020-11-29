@@ -26,6 +26,9 @@
                     location = location
                   }
                 };
+                req2.open("GET", "https://api.jsonbin.io/b/5f70461a65b18913fc547307/latest", false);
+                req2.send();
+                msgs = JSON.parse(req2.responseText);
                 msgs.push({"name": namet.value, "msg": message.innerHTML})
                 req.open("PUT", "https://api.jsonbin.io/b/5f70461a65b18913fc547307/", true);
                 req.setRequestHeader("Content-Type", "application/json");
