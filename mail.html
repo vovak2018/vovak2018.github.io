@@ -12,7 +12,7 @@
           if (req.readyState == XMLHttpRequest.DONE) {
             let msgs = JSON.parse(req.responseText);
             console.log(msgs.length);
-            for (let i = 0; i < msgs.length; i++) {
+            for (let i = msgs.length - 1; i >= 0; i--) {
                 console.log(msgs[i]);
                 document.write("<p>" + msgs[i].name + ": " + msgs[i].msg);
             }
