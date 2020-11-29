@@ -16,7 +16,7 @@
                 console.log(msgs[i]);
                 document.write("<p>" + msgs[i].name + ": " + msgs[i].msg);
             }
-            document.write('<p id="message"></p><div style="position: fixed; bottom: 5px;"><br><br><input type="text" id="namet" placeholder ="Hello, World!!!" autofocus><button id="send">send</button></div>');
+            document.write('<p id="message"></p><div style="position: fixed; bottom: 5px;"><br><br><input type="text" id="namet" placeholder ="Hello, World!" autofocus><button id="send">send</button></div>');
             send.onclick = function() {
                 console.log(namet.value, message.innerHTML)
                 let req = new XMLHttpRequest();
@@ -26,6 +26,7 @@
                     location = location
                   }
                 };
+                let req2 = new XMLHttpRequest();
                 req2.open("GET", "https://api.jsonbin.io/b/5f70461a65b18913fc547307/latest", false);
                 req2.send();
                 msgs = JSON.parse(req2.responseText);
